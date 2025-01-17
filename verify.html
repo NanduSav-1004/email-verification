@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Verification</h1>
+    <div id="message"></div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        const verificationStatus = params.get('status'); // Pass this dynamically based on backend
+
+        if (verificationStatus === 'success') {
+            document.getElementById('message').innerHTML = '<p class="success">Your email has been successfully verified!</p>';
+        } else {
+            document.getElementById('message').innerHTML = '<p class="error">Invalid or expired token. Please try again.</p>';
+        }
+    </script>
+</body>
+</html>
